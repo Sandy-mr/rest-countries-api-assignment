@@ -32,28 +32,20 @@ request
   });
      });
 
+var API_URL = "https://api.github.com/users/sandy-mr/repos"
+var ul = document.createElement("ul");
+var body = document.querySelector("body");
+  request
+   .get(API_URL)
+    .then(function(response){
+   var repos = response.body;
 
+  repos.forEach(function(repos){
+    var li = document.createElement("li");
 
+    li.textContent = repos.name;
 
-
-
-
-
-// var API_URL = "https://api.github.com/users/sandy-mr/repos"
-// var ul = document.createElement("ul");
-// var body = document.querySelector("body");
-//
-// request
-// .get(API_URL)
-// .then(function(response){
-//   var repos = response.body;
-//
-//  repos.forEach(function(repos){
-//    var li = document.createElement("li");
-//
-//    li.textContent = repos.name;
-//
-//    ul.appendChild(li);
-//  });
-// body.appendChild(ul);
-// });
+    ul.appendChild(li);
+  });
+ body.appendChild(ul);
+});
